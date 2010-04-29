@@ -26,6 +26,14 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 						+ ". (" + array[i] + " > " + array[i + 1] + ").");
 		}
 	}
+	
+	public void printArray(int[]array)
+	{
+		for (int i=0;i<array.length;i++)
+		{
+			System.out.println(array[i]);
+		}
+	}
 
 	@Test
 	public final void testBubbleSort() {
@@ -45,8 +53,8 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	public final void testInsertionSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.insertionSort(this.array);
+		//printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
-
 	}
 
 	public final void testMergeSort() {
