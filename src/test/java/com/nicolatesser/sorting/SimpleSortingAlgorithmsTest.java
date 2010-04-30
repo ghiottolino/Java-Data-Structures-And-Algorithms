@@ -35,7 +35,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 		}
 	}
 
-	@Test
+	
 	public final void testBubbleSort() {
 
 		int[] orderedArray = SimpleSortingAlgorithms.bubbleSort(this.array);
@@ -43,7 +43,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 	
-	@Test
+	
 	public final void testBubbleSortOptimized() {
 
 		int[] orderedArray = SimpleSortingAlgorithms.bubbleSortOptimized(this.array);
@@ -70,6 +70,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	public final void testHeapSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.heapSort(this.array);
+		printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
 
 	}
