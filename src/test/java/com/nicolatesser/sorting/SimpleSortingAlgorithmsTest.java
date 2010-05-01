@@ -14,7 +14,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.array = new int[] { 7, 8, 5, 2, 3, 1, 4, 0, 9, 6 };
-		this.array = new int[] { 2,1,3,4,5,6,7,8,9 };
+		//this.array = new int[] { 2,1,3,4,5,6,7,8,9 };
 		
 	}
 

@@ -1,5 +1,7 @@
 package com.nicolatesser.sorting;
 
+import java.util.Random;
+
 public class SimpleSortingAlgorithms {
 
 	public static int[] bubbleSort(int[] array) {
@@ -307,8 +309,55 @@ public class SimpleSortingAlgorithms {
 	}
 
 	public static int[] randomizedQuickSort(int[] array) {
-		// TODO : implement
+		randomizedQuickSort(array, 0, array.length-1);
 		return array;
+	}
+	
+	public static void randomizedQuickSort(int[] array, int a, int b)
+	{
+		//base
+		if (a>=b) return;
+		
+		Random r = new Random();
+		int random = r.nextInt(b-a);
+		int pivotIndex = a + random;
+		int pivot = array[pivotIndex];
+		//substitute random with last
+		array[pivotIndex]=array[b];
+		array[b]=pivot;
+		
+		int i=a;
+		int j=b-1;
+		
+		while (i<=j)
+		{
+			while ((i<=j)&&(array[i]<=pivot))
+			{
+				i++;
+			}
+			while ((i<=j)&&(array[j]>=pivot))
+			{
+				j--;
+			}
+			
+			if (i<j)
+			{
+				int t=array[i];
+				array[i]=array[j];
+				array[j]=t;
+			}
+		}
+		
+		array[b]=array[i];
+		array[i]=pivot;
+		
+		
+		
+		//recursion
+		randomizedQuickSort(array,a,i-1);
+		randomizedQuickSort(array,i+1,b);
+		
+		
 	}
 
 }
