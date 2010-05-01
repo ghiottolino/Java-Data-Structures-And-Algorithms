@@ -14,7 +14,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.array = new int[] { 7, 8, 5, 2, 3, 1, 4, 0, 9, 6 };
-		//this.array = new int[] { 2,1,3,4,5,6,7,8,9 };
+		this.array = new int[] { 2,1,3,4,5,6,7,8,9 };
 		
 	}
 
@@ -56,6 +56,12 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 		//printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
 	}
+	
+	public final void testSelectionSort() {
+		int[] orderedArray = SimpleSortingAlgorithms.selectionSort(this.array);
+		printArray(orderedArray);
+		assertArrayIsOrdered(orderedArray);
+	}
 
 	public final void testMergeSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.mergeSort(this.array);
@@ -64,13 +70,15 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	public final void testQuickSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.quickSort(this.array);
+		
+		printArray(orderedArray);
+		
 		assertArrayIsOrdered(orderedArray);
 
 	}
 
 	public final void testHeapSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.heapSort(this.array);
-		printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
 
 	}

@@ -57,6 +57,33 @@ public class SimpleSortingAlgorithms {
 
 		return array;
 	}
+	
+	
+	public static int[] selectionSort(int[] array) {
+		for (int i=0;i<array.length-1;i++)
+		{
+			int min=Integer.MAX_VALUE;
+			int min_index=i;
+			for (int j=i+1;j<array.length;j++)
+			{
+				if (array[j]<min)
+				{
+					min =array[j];
+					min_index=j;
+				}	
+			}
+			if (min<array[i])
+			{
+				int t=array[i];
+				array[i]=array[min_index];
+				array[min_index]=t;
+			}
+		}
+		
+		return array;
+	}
+	
+	
 
 	public static int[] mergeSort(int[] array) {
 		mergeSort(array, 0, array.length);
@@ -117,8 +144,64 @@ public class SimpleSortingAlgorithms {
 		quickSort(array, 0, array.length - 1);
 		return array;
 	}
+	
+	public static void quickSort(int[] array, int a, int b)
+	{
+		//base
+		if (a>=b) return;
+		
+		int pivot = array[b];
+		int i=a;
+		int j=b-1;
+		
+		while (i<=j)
+		{
+			while ((i<=j)&&(array[i]<=pivot))
+			{
+				i++;
+			}
+			while ((i<=j)&&(array[j]>=pivot))
+			{
+				j--;
+			}
+			
+			if (i<j)
+			{
+				int t=array[i];
+				array[i]=array[j];
+				array[j]=t;
+			}
+		}
+		
+		array[b]=array[i];
+		array[i]=pivot;
+		
+		
+		
+		//recursion
+		quickSort(array,a,i-1);
+		quickSort(array,i+1,b);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-	private static void quickSort(int[] array, int a, int b) {
+	/*private static void quickSort(int[] array, int a, int b) {
 		// base
 		if (b - a < 1)
 			return;
@@ -152,7 +235,7 @@ public class SimpleSortingAlgorithms {
 		quickSort(array, a, j - 1);
 		quickSort(array, j + 1, b);
 
-	}
+	}*/
 
 	
 	
