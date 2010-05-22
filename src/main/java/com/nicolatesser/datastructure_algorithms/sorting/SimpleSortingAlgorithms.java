@@ -88,7 +88,7 @@ public class SimpleSortingAlgorithms {
 	
 
 	public static int[] mergeSort(int[] array) {
-		mergeSort(array, 0, array.length);
+		mergeSort(array, 0, array.length-1);
 		return array;
 	}
 
@@ -100,41 +100,41 @@ public class SimpleSortingAlgorithms {
 	 * @param b
 	 */
 	private static void mergeSort(int[] array, int a, int b) {
-		if (b - a == 1)
+		if (a>= b)
 			return;
 
-		int i = b - ((b - a) / 2);
+		int i = (b+a)/2;
 
 		mergeSort(array, a, i);
-		mergeSort(array, i, b);
+		mergeSort(array, i+1, b);
 
-		merge(a, i, i, b, array);
+		merge(a, i, b, array);
 	}
 
-	private static void merge(int i1, int i2, int j1, int j2, int[] array) {
+	private static void merge(int a, int p, int b, int[] array) {
 
 		// int[]array = new int[array1.length+array2.length];
 
 		int i = 0;
 		int j = 0;
 
-		while ((i + i1 < i2) && (j + j1 < j2)) {
-			if (array[i + i1] <= array[j + j1]) {
-				array[i + j + i1] = array[i + i1];
+		while ((i + a <= p) && (p+1+j <= b)) {
+			if (array[a+i] <= array[p+1+j]) {
+				array[i + j + a] = array[i + a];
 				i++;
 			} else {
-				array[i + j + i1] = array[j + j1];
+				array[i + j + a] = array[p+1+j];
 				j++;
 			}
 		}
 
-		while (i + i1 < i2) {
-			array[i + j + i1] = array[i + i1];
+		while (i + a <= p) {
+			array[i + j + a] = array[a + i];
 			i++;
 		}
 
-		while (j + j1 < j2) {
-			array[i + j + i1] = array[j + j1];
+		while (j + 1 + p <= b) {
+			array[i + j + a] = array[j + 1 + b];
 			j++;
 		}
 		// return array;
@@ -202,42 +202,6 @@ public class SimpleSortingAlgorithms {
 	
 	
 	
-
-	/*private static void quickSort(int[] array, int a, int b) {
-		// base
-		if (b - a < 1)
-			return;
-
-		// sorting
-		int pivot = array[b];
-
-		// scanning the array from the beginning looking for something bigger
-		// than pivot, and from the end looking for something smaller than the
-		// pivot
-		int i = 0;
-		int j = b - 1;
-		while (i < j) {
-			while ((array[i] < pivot) && (i < j)) {
-				i++;
-			}
-			while ((array[j] > pivot) && (i < j)) {
-				j--;
-			}
-			if (i < j) {
-				int t = array[i];
-				array[i] = array[j];
-				array[j] = t;
-			}
-		}
-		// change j and pivot
-		array[b] = array[j];
-		array[j] = pivot;
-
-		// recursive call
-		quickSort(array, a, j - 1);
-		quickSort(array, j + 1, b);
-
-	}*/
 
 	
 	
