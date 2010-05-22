@@ -9,12 +9,14 @@ public class Vertex {
 	
 	private Integer o;
 	
+	private Boolean visited;
 	
 	
 	public Vertex(int o)
 	{
 		this.o=o;
 		this.edges = new Vector<Edge>();
+		this.visited=false;
 	}
 	
 	public void addEdge(Edge e)
@@ -38,6 +40,16 @@ public class Vertex {
 	public void setEdges(List<Edge> edges) {
 		this.edges = edges;
 	}
+
+	public Boolean getVisited() {
+		return visited;
+	}
+
+	public void setVisited(Boolean visited) {
+		this.visited = visited;
+	}
+	
+	
 	
 	
 	
