@@ -3,6 +3,7 @@
 package com.nicolatesser.datastructure_algorithms.datastructures.graph;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author ntesser
@@ -15,22 +16,31 @@ public interface Graph
 	
 	public int numEdges();
 	
-	public Iterator<Vertex> vertices();
+	public List<Vertex> vertices();
 	
-	public Iterator<Edge> edges();
+	public List<Edge> edges();
 	
 	public Vertex aVertex();
 	
 	public int degree(Vertex v);
 	
-	public Iterator<Vertex> adjacentVertices(Vertex v);
+	public List<Vertex> adjacentVertices(Vertex v);
 	
-	public Iterator<Edge> incidendEdges(Vertex v);
+	public List<Edge> incidendEdges(Vertex v);
 	
 	public Vertex[]endVertices (Edge e);
 	
 	public Vertex opposite (Vertex v, Edge e);
 	
 	public boolean areAdjacent (Vertex v, Vertex w);
+	
+	public Edge insertEdge (Vertex v, Vertex w, Integer o);
+	
+	public Vertex insertVertex(Integer o);
+	
+//	public void removeVertex(Vertex v);
+	
+//	public void removeEdge (Edge e);
+	
 
 }
