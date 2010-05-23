@@ -191,9 +191,139 @@ public class GraphAlgorithms {
 	}
 	
 	
-	// floyd warschall
 	
 	// minimum spanning tree
+	
+	/*
+	 * Template: T is empty
+	 * until T size is not n-1
+	 * Si,...Sj are the components connected by the tree (or the single vertices)
+	 * look for a edge between 2 different component, and add it to the tree.
+	 */
+	
+	
+	public static List<Edge> primDijkstra(Graph graph)
+	{
+		//this algorithm consider mostly 2 components: S with the vertices connected by the tree (always 1 component), and all others.
+		//at every step it select the mim vertex among one vertex of S and one of V/S.
+		
+		List<Edge> tree = new Vector<Edge>();
+		int n = graph.numVertices();
+		
+		Vertex v1 = graph.aVertex();
+		List<Vertex> s = new Vector<Vertex>();
+		s.add(v1);
+		
+		while(tree.size()<(n-1))
+		{
+			int min = Integer.MAX_VALUE;
+			Edge minEdge = null;
+			Vertex vertexToAdd=null;
+			for (Vertex v : s)
+			{
+				List<Edge> incidendEdges = graph.incidendEdges(v);
+				for (Edge e : incidendEdges)
+				{
+					Vertex w = graph.opposite(v, e);
+					if (!s.contains(w))
+					{
+						if (e.getO()<min)
+						{
+							min = e.getO();
+							minEdge = e;
+							vertexToAdd=w;
+						}
+					}
+				}
+				
+			}
+			
+			tree.add(minEdge);
+			s.add(vertexToAdd);
+			
+		}
+		
+		
+		return tree;
+	}
+	
+	
+	public static List<Edge> kruskal(Graph graph)
+	{
+		//order the edges from the smallest to the biggest
+		//keep track of connected components, at the beginning all components are unconnected
+		//select always the smallest edge that does connect 2 different components
+		
+		int n = graph.numVertices();
+		int m = graph.numEdges();
+		List<Edge> edges = graph.edges();
+		//order (stupid bubble sort)
+		for (int i=0;i<m-1;i++)
+		{
+			for (int j=i+1;j<m;j++)
+			{
+				Edge ei = edges.get(i);
+				Edge ej = edges.get(j);
+				if (ej.getO()<ei.getO())
+				{
+					edges.set(i, ej);
+					edges.set(j, ei);
+
+				}
+			}
+		}
+		
+		for (int i=0;i<m;i++)
+		{
+			System.out.println("order test i="+i+", edge cost="+edges.get(i).getO());
+		}
+		
+		
+		List<Edge> tree = new Vector<Edge>();
+		
+		//initialize connected components
+		int[]connectedComponents = new int[n];
+		for (int i=0;i<n;i++)
+		{
+			connectedComponents[i]=i;
+		}
+		
+		int edgesIndex = 0;
+		
+		while (tree.size()<(n-1))
+		{
+			
+			Edge e =edges.get(edgesIndex);
+			
+			Integer i = e.getVertex1().getO()-1;
+			Integer j = e.getVertex2().getO()-1;
+			
+			//found the edge
+			if (connectedComponents[i]!=connectedComponents[j])
+			{
+				
+				tree.add(e);
+				
+				//update the connected components
+				for (int k=0;k<n;k++)
+				{
+					if (connectedComponents[k]==connectedComponents[j])
+					{
+						connectedComponents[k]=connectedComponents[i];
+					}
+				}
+					
+					
+			}
+			edgesIndex++;
+			
+		}
+		
+		
+		
+		return tree;
+	}
+	
 	
 	// A * ?
 }

@@ -123,7 +123,42 @@ public class GraphAlgorithmsTest {
 	}
 	
 	
+	@Test
+	public void testPrimDijkstra()
+	{
+		//Prepare
+		makeTestGraph();
+		
+		//Execute
+		List<Edge> primDijkstraEdges = GraphAlgorithms.primDijkstra(graph);
+		
+		//Verify
+		int i=0;
+		for (Edge e : primDijkstraEdges)
+		{
+			System.out.println("i="+i+" edge = "+e.getVertex1().getO()+","+e.getVertex2().getO());
+			i++;
+		}
+	}
 	
+	
+	@Test
+	public void testKruskal()
+	{
+		//Prepare
+		makeTestGraph();
+		
+		//Execute
+		List<Edge> kruskalEdges = GraphAlgorithms.kruskal(graph);
+		
+		//Verify
+		int i=0;
+		for (Edge e : kruskalEdges)
+		{
+			System.out.println("i="+i+" edge = "+e.getVertex1().getO()+","+e.getVertex2().getO());
+			i++;
+		}
+	}	
 	
 	public void makeTestGraph()
 	{
