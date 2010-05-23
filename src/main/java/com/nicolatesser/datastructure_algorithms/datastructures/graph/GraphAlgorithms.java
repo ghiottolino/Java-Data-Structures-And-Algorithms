@@ -325,5 +325,95 @@ public class GraphAlgorithms {
 	}
 	
 	
-	// A * ?
+	
+	public static List<Vertex> aStar(Graph graph, Vertex start, Vertex goal, Integer[] h)
+	{
+		List<Vertex> vertices = graph.vertices();
+		
+		
+		List<Vertex> openSet = new Vector<Vertex>();
+		List<Vertex> closedSet = new Vector<Vertex>();
+				
+		
+		start.setEstimation(h[(start.getO()-1)]);
+		start.setCost(0);
+		openSet.add(start);
+
+
+		
+		while (!openSet.isEmpty())
+		{
+			//select the goal in openset with min estimated score
+			int min = Integer.MAX_VALUE;
+			Vertex minVertex =  null;
+			for (Vertex v : openSet)
+			{
+				if (v.getEstimation()<min)
+				{
+					min = v.getEstimation();
+					minVertex = v;
+				}
+			}
+			minVertex.setVisited(true);
+			openSet.remove(minVertex);
+			closedSet.add(minVertex);
+
+			System.out.println("*** Selected vertex "+minVertex.getO());
+			System.out.println("** vertex "+minVertex.getO()+ "has cost "+minVertex.getCost()+" and estimation "+minVertex.getEstimation());
+				
+			
+			
+			
+			
+			//calculate f (estimation)
+			List<Edge> incidendEdges = graph.incidendEdges(minVertex);
+			for (Edge e : incidendEdges)
+			{
+				
+				Vertex opposite = graph.opposite(minVertex, e);
+				
+				
+				if (closedSet.contains(opposite))
+				{
+					continue;
+				}
+				
+				
+				int distance = minVertex.getCost() + e.getO();
+				boolean tentativeIsBetter;
+				
+				System.out.println("considering vertex "+opposite.getO()+", distance is "+distance);
+				
+				
+				if (!openSet.contains(opposite))
+				{
+					openSet.add(opposite);
+					System.out.println("vertex "+opposite.getO()+" is added to openset.");
+					tentativeIsBetter = true;
+				}
+				else if (distance < opposite.getCost())
+				{
+					tentativeIsBetter=true;	
+				}
+				else
+				{
+					tentativeIsBetter=false;
+				}
+				
+				if (tentativeIsBetter)
+				{
+					opposite.setCost(distance);
+					opposite.setEstimation(distance + h[(opposite.getO()-1)]);
+					System.out.println("(updated)vertex "+opposite.getO()+ "has cost "+opposite.getCost()+" and estimation "+opposite.getEstimation());
+						
+
+				}
+			}
+			
+		}
+		
+		return vertices;
+	}
+	
+	
 }

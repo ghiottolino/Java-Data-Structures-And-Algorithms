@@ -15,6 +15,9 @@ public class Vertex {
 	
 	private Integer cost;
 	
+	private Integer estimation;
+	
+	
 	
 	public Vertex(int o)
 	{
@@ -67,6 +70,14 @@ public class Vertex {
 
 	public void setCost(Integer cost) {
 		this.cost = cost;
+	}
+
+	public Integer getEstimation() {
+		return estimation;
+	}
+
+	public void setEstimation(Integer estimation) {
+		this.estimation = estimation;
 	}
 	
 	

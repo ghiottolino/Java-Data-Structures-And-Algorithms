@@ -160,6 +160,30 @@ public class GraphAlgorithmsTest {
 		}
 	}	
 	
+	
+	@Test
+	public void aStarTest()
+	{
+		//Prepare
+		makeTestGraph();
+		List<Vertex> vertices = graph.vertices();
+		Vertex start = vertices.get(0);
+		Vertex goal = vertices.get(7);
+		Integer[]h = new Integer[]{3,3,2,2,1,2,3,0};
+		
+		//Execute
+		List<Vertex> aStar = GraphAlgorithms.aStar(graph, start, goal, h);
+		
+		//Verify
+		//Verify
+		for (int i=0;i<aStar.size();i++)
+		{
+			Vertex v = aStar.get(i);
+			System.out.println("i="+i+",="+v.getO()+" cost = "+v.getCost()+", estimation = "+v.getEstimation() );
+		}
+		
+	}
+	
 	public void makeTestGraph()
 	{
 		//Creating this graph
