@@ -34,6 +34,9 @@ public interface Graph
 	
 	public boolean areAdjacent (Vertex v, Vertex w);
 	
+	public Edge getEdge (Vertex v, Vertex w);
+	
+	
 	public Edge insertEdge (Vertex v, Vertex w, Integer o);
 	
 	public Vertex insertVertex(Integer o);

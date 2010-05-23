@@ -11,6 +11,10 @@ public class Vertex {
 	
 	private Boolean visited;
 	
+	private Vertex pred;
+	
+	private Integer cost;
+	
 	
 	public Vertex(int o)
 	{
@@ -47,6 +51,22 @@ public class Vertex {
 
 	public void setVisited(Boolean visited) {
 		this.visited = visited;
+	}
+
+	public Vertex getPred() {
+		return pred;
+	}
+
+	public void setPred(Vertex pred) {
+		this.pred = pred;
+	}
+
+	public Integer getCost() {
+		return cost;
+	}
+
+	public void setCost(Integer cost) {
+		this.cost = cost;
 	}
 	
 	

@@ -58,6 +58,16 @@ public class AdjacencyListGraph implements Graph {
 		
 		return false;
 	}
+	
+	@Override
+	public Edge getEdge(Vertex v, Vertex w) {
+		List<Edge> incidendEdges = this.incidendEdges(v);
+		for (Edge e : incidendEdges)
+		{
+			if (this.opposite(v, e)==w) return e;
+		}
+		return null;
+	}
 
 	@Override
 	public int degree(Vertex v) {

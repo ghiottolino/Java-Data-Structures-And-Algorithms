@@ -77,6 +77,53 @@ public class GraphAlgorithmsTest {
 	}
 	
 	
+	@Test
+	public void testDijkstra()
+	{
+		//Prepare
+		makeTestGraph();
+		
+		
+		//Execute
+		List<Vertex> dijkstra = GraphAlgorithms.dijkstra(graph, graph.aVertex());
+		
+		//Verify
+		Vertex v = dijkstra.get(0);
+		System.out.println("i="+0+",="+v.getO()+" cost = "+v.getCost());
+		for (int i=1;i<dijkstra.size();i++)
+		{
+			v = dijkstra.get(i);
+			System.out.println("i="+i+",="+v.getO()+" cost = "+v.getCost()+" prec = "+v.getPred().getO());
+		}
+	}
+	
+	@Test
+	public void testFloydWarschall()
+	{
+		//Prepare	
+		makeTestGraph();
+		int n = graph.numVertices();
+		Integer[][]costs = new Integer[n][n];
+		Integer[][]pred = new Integer[n][n];
+		
+		
+		//Execute
+		GraphAlgorithms.floydWarschall(graph, costs, pred);
+		
+
+		for (int i=0;i<n;i++)
+		{
+			for (int j=0;j<n;j++)
+			{
+				System.out.println("costs "+(i+1)+","+(j+1)+" = "+costs[i][j]);
+				System.out.println("pred "+(i+1)+","+(j+1)+" = "+(pred[i][j]+1));
+				}
+		}
+		
+	}
+	
+	
+	
 	
 	public void makeTestGraph()
 	{
@@ -97,7 +144,7 @@ public class GraphAlgorithmsTest {
 		graph.insertEdge(v1, v3, 3);
 		graph.insertEdge(v1, v4, 2);
 		graph.insertEdge(v2, v4, 1);
-		graph.insertEdge(v3, v5, 2);
+		graph.insertEdge(v3, v5, 3);
 		graph.insertEdge(v3, v6, 1);
 		graph.insertEdge(v4, v5, 4);
 		graph.insertEdge(v4, v6, 2);
