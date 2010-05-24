@@ -29,7 +29,7 @@ public class BitArithmeticAlgorithms {
 			
 			int resultBit = aIthBit ^ bIthBit ^ c;
 			
-			c = (aIthBit & bIthBit)^(aIthBit & c)^(c & bIthBit);
+			c = (aIthBit & bIthBit) | (aIthBit & c) | (c & bIthBit);
 			
 			for (int j=1;j<=i;j++)
 			{

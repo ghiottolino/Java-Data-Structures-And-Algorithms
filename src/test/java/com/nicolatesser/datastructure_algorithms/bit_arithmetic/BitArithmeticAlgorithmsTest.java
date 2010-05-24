@@ -16,5 +16,25 @@ public class BitArithmeticAlgorithmsTest {
 		
 		Assert.assertEquals(a+b, sum);
 	}
+	
+	@Test
+	public void testSum2() {
+		int a = 1;
+		int b = 0;
+		
+		int sum = BitArithmeticAlgorithms.sum(a, b);
+		
+		Assert.assertEquals(a+b, sum);
+	}
+	
+	@Test
+	public void testSum3() {
+		int a = 7;
+		int b = 7;
+		
+		int sum = BitArithmeticAlgorithms.sum(a, b);
+		
+		Assert.assertEquals(a+b, sum);
+	}
 
 }
