@@ -7,4 +7,8 @@ import com.nicolatesser.datastructure_algorithms.datastructures.tree.linked_stru
 public interface Position {
 	
 	
+	public Object getObject();
+	public void setObject(Object object);
+	
+	
 }
