@@ -9,16 +9,16 @@ import com.nicolatesser.datastructure_algorithms.datastructures.tree.Tree;
 public class TreeTraversalAlgorihtms {
 	
 	
-	public static void inOrderTreeTraversal (Tree t)
+	public static void preOrderTreeTraversal (Tree t)
 	{
-		System.out.println("inorder traversal");
+		System.out.println("preorder traversal");
 
-		inOrderTreeTraversal(t, t.root());
+		preOrderTreeTraversal(t, t.root());
 		
 		
 	}
 	
-	private static void inOrderTreeTraversal (Tree t, Position p)
+	private static void preOrderTreeTraversal (Tree t, Position p)
 	{
 		//visit t
 		System.out.println(p.getObject());
@@ -28,7 +28,7 @@ public class TreeTraversalAlgorihtms {
 		List<? extends Position> children = t.children(p);
 		for (Position child : children)
 		{
-			inOrderTreeTraversal(t,child);
+			preOrderTreeTraversal(t,child);
 		}	
 	}
 	

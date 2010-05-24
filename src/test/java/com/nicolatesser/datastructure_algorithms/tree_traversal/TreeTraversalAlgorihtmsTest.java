@@ -34,11 +34,11 @@ public class TreeTraversalAlgorihtmsTest {
 	}
 
 	@Test
-	public void testInOrderTreeTraversal() {
+	public void testPreOrderTreeTraversal() {
 		//Prepare
 		makeTestTree();
 		//Execute
-		TreeTraversalAlgorihtms.inOrderTreeTraversal(tree);
+		TreeTraversalAlgorihtms.preOrderTreeTraversal(tree);
 		
 		
 	}
