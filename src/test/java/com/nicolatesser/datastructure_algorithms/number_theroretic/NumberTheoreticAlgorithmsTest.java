@@ -20,7 +20,7 @@ public class NumberTheoreticAlgorithmsTest {
 	@Test
 	public void testIsPrime_Prime() {
 		
-		int a = 3571;
+		int a = 3041;
 		
 		boolean prime = NumberTheoreticAlgorithms.isPrime(a);
 		
@@ -33,6 +33,26 @@ public class NumberTheoreticAlgorithmsTest {
 		int a = 2597;
 		
 		boolean prime = NumberTheoreticAlgorithms.isPrime(a);
+		
+		Assert.assertFalse(prime);
+	}
+	
+	@Test
+	public void testIsPseudoPrime_Prime() {
+		
+		int a = 53;
+		
+		boolean prime = NumberTheoreticAlgorithms.isPseudoPrime(a);
+		
+		Assert.assertTrue(prime);
+	}
+	
+	@Test
+	public void testIsPseudoPrime_NonPrime() {
+		
+		int a = 2597;
+		
+		boolean prime = NumberTheoreticAlgorithms.isPseudoPrime(a);
 		
 		Assert.assertFalse(prime);
 	}

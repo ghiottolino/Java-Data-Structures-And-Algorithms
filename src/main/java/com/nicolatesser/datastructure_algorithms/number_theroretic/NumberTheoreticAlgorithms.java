@@ -6,11 +6,25 @@ public class NumberTheoreticAlgorithms {
 	{
 		long sqrtA = (long) Math.floor(Math.sqrt(a));
 		
-		for (int i=2;i<=sqrtA;i++)
+		if ((a % 2)==0) return false;
+		
+		for (int i=3;i<=sqrtA;i=i+2)
 		{
 			if ((a % i)==0) return false;
 		}
 		return true;
+		
+	}
+	
+	public static boolean isPseudoPrime(long a)
+	{
+		long pow = (long)Math.pow(2, a-1);
+		long rem = pow % a ;
+		
+		if (rem == 1)
+			return true;
+		else
+			return false;
 		
 	}
 	
