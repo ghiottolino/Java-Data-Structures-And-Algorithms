@@ -44,7 +44,39 @@ public class SimpleSortingAlgorithms {
 		}
 		return array;
 	}
-
+	
+	public static int[] insertionSort(int[] array) {
+	
+		for (int i=1;i<array.length;i++)
+		{
+			
+			int j=i-1;
+			while ((j>=0)&&(array[i]<array[j]))
+			{
+				int t = array[i];
+				array[i] = array[j];
+				array[j] = t;
+				i--;
+				j--;
+			}
+			
+		}
+		
+		return array;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*
 	public static int[] insertionSort(int[] array) {
 		for (int i = 1; i < array.length; i++) {
 			int j = i - 1;
@@ -59,7 +91,7 @@ public class SimpleSortingAlgorithms {
 
 		return array;
 	}
-	
+	*/
 	
 	public static int[] selectionSort(int[] array) {
 		for (int i=0;i<array.length-1;i++)
@@ -323,5 +355,56 @@ public class SimpleSortingAlgorithms {
 		
 		
 	}
+	
+	
+	public static int select(int[]array, int n)
+	{
+		return select(array,n,0,array.length-1);
+	}
+	
+
+	private static int select(int[]array,int n, int a, int b)
+	{
+		System.out.println("select "+n+"th element between "+a+","+b);
+		Random r = new Random();
+		int random = r.nextInt(b-a);
+		int pivotIndex = a + random;
+		int pivot = array[pivotIndex];	
+		System.out.println("selected pivot"+pivot);
+		
+		//swap
+		array[pivotIndex]=array[b];
+		array[b]=pivot;
+		
+		int i=a;
+		int j=b-1;
+		
+		while((i<=j))
+		{
+			while((i<=j)&&(array[i]<pivot))i++;
+			while((i<=j)&&(array[j]>pivot))j--;
+		
+			if (i<j)
+			{
+				int t=array[i];
+				array[i]=array[j];
+				array[j]=t;
+			}
+		}
+		//exchange i and pivot
+		System.out.println("i is"+i);
+		array[b]=array[i];
+		array[i]=pivot;
+		
+		int virtualI = i-a;
+		//TODO : fixme: when i do the 2nd partition, then i crash with the index i and a 
+		
+		if (n==virtualI) return pivot;
+		else if (n<virtualI) return select(array, n, a,i-1);
+		else return select(array, n-a-1, i+1,b);
+			
+		
+	}
+	
 
 }

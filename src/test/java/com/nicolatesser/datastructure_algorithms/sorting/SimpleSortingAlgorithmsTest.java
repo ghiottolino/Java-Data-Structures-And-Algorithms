@@ -35,7 +35,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 		}
 	}
 
-	
+	@Test
 	public final void testBubbleSort() {
 
 		int[] orderedArray = SimpleSortingAlgorithms.bubbleSort(this.array);
@@ -43,7 +43,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 	
-	
+	@Test
 	public final void testBubbleSortOptimized() {
 
 		int[] orderedArray = SimpleSortingAlgorithms.bubbleSortOptimized(this.array);
@@ -51,23 +51,30 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 
+	@Test
 	public final void testInsertionSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.insertionSort(this.array);
-		//printArray(orderedArray);
+		System.out.println("hey");
+		printArray(orderedArray);
+		System.out.println("hey");
+
 		assertArrayIsOrdered(orderedArray);
 	}
 	
+	@Test
 	public final void testSelectionSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.selectionSort(this.array);
 		printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
 	}
 
+	@Test
 	public final void testMergeSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.mergeSort(this.array);
 		assertArrayIsOrdered(orderedArray);
 	}
 
+	@Test
 	public final void testQuickSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.quickSort(this.array);
 		
@@ -77,16 +84,25 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 
+	@Test
 	public final void testHeapSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.heapSort(this.array);
 		assertArrayIsOrdered(orderedArray);
 
 	}
 
+	@Test
 	public final void testRandomizedQuickSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.randomizedQuickSort(this.array);
 		assertArrayIsOrdered(orderedArray);
 
+	}
+	
+	@Test
+	public final void testSelect() {
+		int elementAtRank = SimpleSortingAlgorithms.select(this.array, 4);
+		Assert.assertEquals(4, elementAtRank);
+		
 	}
 
 }
