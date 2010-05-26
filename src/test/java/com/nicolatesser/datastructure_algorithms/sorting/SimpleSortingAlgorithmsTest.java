@@ -96,6 +96,10 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 	@Test
 	public final void testRandomizedQuickSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.randomizedQuickSort(this.array);
+		System.out.println("ord");
+		printArray(orderedArray);
+		System.out.println("ord");
+
 		assertArrayIsOrdered(orderedArray);
 
 	}

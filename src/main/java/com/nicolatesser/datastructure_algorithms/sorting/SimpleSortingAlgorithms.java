@@ -119,52 +119,68 @@ public class SimpleSortingAlgorithms {
 	
 	
 
-	public static int[] mergeSort(int[] array) {
-		mergeSort(array, 0, array.length-1);
-		return array;
-	}
+	
 
 	
 	
-	private static void mergeSort(int[] array, int a, int b)
+	public static int[] mergeSort(int[] array)
 	{
-		if (a>=b) return;
+		if (array.length==1) return array;
 		
-		int mid = (b-a) / 2;
+		int mid = (array.length) / 2;
 		
-		mergeSort(array, a, mid);
-		mergeSort(array, mid+1, b);
+		int[] low = new int[mid];
+		int[] high = new int[array.length-mid];
 		
-		int lo =a;
-		int hi = b;
+		for (int i=0;i<array.length;i++)
+		{
+			if (i<mid)
+			{
+				low[i]=array[i];
+			}
+			else
+			{
+				high[i-mid]=array[i];
+			}
+		}
+			
 		
-		int end_lo = mid;
-        int start_hi = mid + 1;
-        while ((lo <= end_lo) && (start_hi <= hi)) {
-            
-            if (array[lo] < array[start_hi]) {
-                lo++;
-            } else {
-                /*  
-                 *  a[lo] >= a[start_hi]
-                 *  The next element comes from the second list, 
-                 *  move the a[start_hi] element into the next 
-                 *  position and shuffle all the other elements up.
-                 */
-            	int T = array[start_hi];
-                for (int k = start_hi - 1; k >= lo; k--) {
-                    array[k+1] = array[k];
-                }
-                array[lo] = T;
-                lo++;
-                end_lo++;
-                start_hi++;
-            }
-        }
+		low = mergeSort(low);
+		high = mergeSort(high);
+		
+		int[]ordered = new int[array.length];
+	
+		int i=0;
+		int j=0;
+		
+		while ((i<low.length)&&(j<high.length))
+		{
+			if (low[i]<=high[j])
+			{
+				ordered[i+j]=low[i];
+				i++;
+			}
+			else
+			{
+				ordered[i+j]=high[j];
+				j++;
+			}
+		}
+	
+		while (i<low.length)
+		{
+			ordered[i+j]=low[i];
+			i++;
+		}
+		
+		while (j<high.length)
+		{
+			ordered[i+j]=high[j];
+			j++;
+		}
 		
 		
-		
-		return;
+		return ordered;
 	}
 	
 	
@@ -370,24 +386,28 @@ public class SimpleSortingAlgorithms {
 	
 	private static void randomizedQuickSort(int[] array, int a, int b) {
 		
-		if (a==b) return;
+		if (a>=b) return;
+		
+		System.out.println("*******");
 		
 		Random random = new Random();
-		int pivotIndex = random.nextInt(b-a);
+		int pivotIndex = random.nextInt(b-a)+a;
 		int pivot = array[pivotIndex];
+		
+		System.out.println("select pivot"+pivot);
 		
 		//pivot at the end
 		array[pivotIndex] =array[b];
 		array[b] = pivot;
 		
 		int i=a;
-		int j=b;
+		int j=b-1;
 		
-		while (i>=j)
+		while (i<=j)
 		{
-			while ((i>=j)&&(array[i]<=pivot)) i++;
-			while ((i>=j)&&(array[j]>pivot)) i++;
-			
+			while ((i<=j)&&(array[i]<=pivot)) i++;
+			while ((i<=j)&&(array[j]>=pivot)) j--;
+
 			if (i<j)
 			{
 				int t=array[i];
@@ -395,10 +415,15 @@ public class SimpleSortingAlgorithms {
 				array[j]=t;
 			}		
 		}
+
+		
+		array[b]=array[i];
+		array[i]=pivot;
 		
 		randomizedQuickSort(array, a, i-1);
 		randomizedQuickSort(array, i+1, b);
 		
+	
 		return;
 		
 	}
