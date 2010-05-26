@@ -56,5 +56,36 @@ public class NumberTheoreticAlgorithmsTest {
 		
 		Assert.assertFalse(prime);
 	}
+	
+	@Test
+	public void testGcd_13_29()
+	{
+		int gcd = NumberTheoreticAlgorithms.gcd(13, 29);
+		Assert.assertEquals(1, gcd);
+	}
+	
+	@Test
+	public void testGcd_9_12()
+	{
+		int gcd = NumberTheoreticAlgorithms.gcd(9, 12);
+		Assert.assertEquals(3, gcd);
+	}
+	
+	
+	@Test
+	public void testGcdNonRecursive_13_29()
+	{
+		int gcd = NumberTheoreticAlgorithms.gcd_non_recursive(13, 29);
+		Assert.assertEquals(1, gcd);
+	}
+	
+	@Test
+	public void testGcdNonRecursive_9_12()
+	{
+		int gcd = NumberTheoreticAlgorithms.gcd_non_recursive(9, 12);
+		Assert.assertEquals(3, gcd);
+	}
+	
+	
 
 }

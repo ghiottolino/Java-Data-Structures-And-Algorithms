@@ -124,6 +124,36 @@ public class SimpleSortingAlgorithms {
 		return array;
 	}
 
+	
+	
+	private static void mergeSort(int[] array, int a, int b)
+	{
+		if (a>=b) return;
+		
+		int middle = (b-a) / 2;
+		
+		mergeSort(array, a, middle);
+		mergeSort(array, middle+1, b);
+		
+		int i =a;
+		int j = middle+1;
+		
+		while ((i<=middle)&&(j<=b))
+		{
+			
+		}
+		
+		
+		
+		return;
+	}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Implemented in place, with indexes
 	 * 
@@ -131,7 +161,7 @@ public class SimpleSortingAlgorithms {
 	 * @param a
 	 * @param b
 	 */
-	private static void mergeSort(int[] array, int a, int b) {
+	/*private static void mergeSort(int[] array, int a, int b) {
 		if (a>= b)
 			return;
 
@@ -171,7 +201,7 @@ public class SimpleSortingAlgorithms {
 		}
 		// return array;
 	}
-
+*/
 	
 	//TODO: fix me
 	public static int[] quickSort(int[] array) {
@@ -304,11 +334,64 @@ public class SimpleSortingAlgorithms {
 		return array;
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static int[] randomizedQuickSort(int[] array) {
 		randomizedQuickSort(array, 0, array.length-1);
 		return array;
 	}
 	
+	
+	private static void randomizedQuickSort(int[] array, int a, int b) {
+		
+		if (a==b) return;
+		
+		Random random = new Random();
+		int pivotIndex = random.nextInt(b-a);
+		int pivot = array[pivotIndex];
+		
+		//pivot at the end
+		array[pivotIndex] =array[b];
+		array[b] = pivot;
+		
+		int i=a;
+		int j=b;
+		
+		while (i>=j)
+		{
+			while ((i>=j)&&(array[i]<=pivot)) i++;
+			while ((i>=j)&&(array[j]>pivot)) i++;
+			
+			if (i<j)
+			{
+				int t=array[i];
+				array[i]=array[j];
+				array[j]=t;
+			}		
+		}
+		
+		randomizedQuickSort(array, a, i-1);
+		randomizedQuickSort(array, i+1, b);
+		
+		return;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
 	public static void randomizedQuickSort(int[] array, int a, int b)
 	{
 		//base
@@ -355,7 +438,7 @@ public class SimpleSortingAlgorithms {
 		
 		
 	}
-	
+	*/
 	
 	public static int select(int[]array, int n)
 	{
@@ -365,6 +448,8 @@ public class SimpleSortingAlgorithms {
 
 	private static int select(int[]array,int n, int a, int b)
 	{
+		if (a==b) return array[a];
+		
 		System.out.println("select "+n+"th element between "+a+","+b);
 		Random r = new Random();
 		int random = r.nextInt(b-a);
@@ -395,13 +480,10 @@ public class SimpleSortingAlgorithms {
 		System.out.println("i is"+i);
 		array[b]=array[i];
 		array[i]=pivot;
-		
-		int virtualI = i-a;
-		//TODO : fixme: when i do the 2nd partition, then i crash with the index i and a 
-		
-		if (n==virtualI) return pivot;
-		else if (n<virtualI) return select(array, n, a,i-1);
-		else return select(array, n-a-1, i+1,b);
+				
+		if (n==i) return pivot;
+		else if (n<i) return select(array, n, a,i-1);
+		else return select(array, n, i+1,b);
 			
 		
 	}

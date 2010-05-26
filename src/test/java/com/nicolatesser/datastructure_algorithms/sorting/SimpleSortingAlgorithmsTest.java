@@ -1,5 +1,6 @@
 package com.nicolatesser.datastructure_algorithms.sorting;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import com.nicolatesser.datastructure_algorithms.sorting.SimpleSortingAlgorithms;
@@ -11,6 +12,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	private int[] array;
 
+	@Before
 	protected void setUp() throws Exception {
 		super.setUp();
 		this.array = new int[] { 7, 8, 5, 2, 3, 1, 4, 0, 9, 6 };

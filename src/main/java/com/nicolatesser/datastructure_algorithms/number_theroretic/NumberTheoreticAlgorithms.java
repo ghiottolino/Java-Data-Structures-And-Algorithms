@@ -35,4 +35,46 @@ public class NumberTheoreticAlgorithms {
 	// ...
 	//till x % y == 0 , then y is the gcd.
 	
+	
+	public static int gcd(int a,int b)
+	{
+		if (b>a){
+			int t=a;
+			a=b;
+			b=t;
+		}
+		
+		int mod = a % b;
+		
+		if (mod == 0) return b;
+		else
+			return gcd(b,mod);
+	}
+	
+	
+	public static int gcd_non_recursive(int a,int b)
+	{
+		if (b>a){
+			int t=a;
+			a=b;
+			b=t;
+		}
+		
+		int mod = a % b;
+		
+		while (mod != 0)
+		{
+			a=b;
+			b=mod;
+			mod = a%b;
+		}
+		
+		return b;
+	}
+	
+	
+	
+	
+	
+	
 }
