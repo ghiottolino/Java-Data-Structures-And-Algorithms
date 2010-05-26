@@ -130,18 +130,37 @@ public class SimpleSortingAlgorithms {
 	{
 		if (a>=b) return;
 		
-		int middle = (b-a) / 2;
+		int mid = (b-a) / 2;
 		
-		mergeSort(array, a, middle);
-		mergeSort(array, middle+1, b);
+		mergeSort(array, a, mid);
+		mergeSort(array, mid+1, b);
 		
-		int i =a;
-		int j = middle+1;
+		int lo =a;
+		int hi = b;
 		
-		while ((i<=middle)&&(j<=b))
-		{
-			
-		}
+		int end_lo = mid;
+        int start_hi = mid + 1;
+        while ((lo <= end_lo) && (start_hi <= hi)) {
+            
+            if (array[lo] < array[start_hi]) {
+                lo++;
+            } else {
+                /*  
+                 *  a[lo] >= a[start_hi]
+                 *  The next element comes from the second list, 
+                 *  move the a[start_hi] element into the next 
+                 *  position and shuffle all the other elements up.
+                 */
+            	int T = array[start_hi];
+                for (int k = start_hi - 1; k >= lo; k--) {
+                    array[k+1] = array[k];
+                }
+                array[lo] = T;
+                lo++;
+                end_lo++;
+                start_hi++;
+            }
+        }
 		
 		
 		
