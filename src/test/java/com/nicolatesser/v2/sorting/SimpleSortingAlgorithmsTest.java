@@ -79,6 +79,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	public final void testHeapSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.heapSort(this.array);
+		printArray(orderedArray);
 		assertArrayIsOrdered(orderedArray);
 
 	}

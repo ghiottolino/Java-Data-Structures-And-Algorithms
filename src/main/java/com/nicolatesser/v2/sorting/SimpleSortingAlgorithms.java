@@ -156,8 +156,65 @@ public class SimpleSortingAlgorithms {
 	}
 
 	public static int[] heapSort(int[] array) {
+		// build heap
+		for (int i=1;i<array.length;i++)
+		{
+			int currentIndex = i;
+			int parentIndex = (i-1) / 2;
+			while((array[parentIndex]<array[currentIndex]))
+			{
+				int  t=array[parentIndex];
+				array[parentIndex] = array[currentIndex];
+				array[currentIndex] = t;
+				
+				currentIndex = parentIndex;
+				parentIndex = (parentIndex-1) / 2;
+			}
+			
+			
+		}
+		
+		// sort
+		
+		for (int i=0;i<array.length-1;i++)
+		{
+			//swap the top of the heap with the virtual end of the head (heap is becoming smaller)
+			int t = array[0];
+			array[0] = array[array.length-1-i];
+			array[array.length-1-i] = t;
+			
+			
+			int currentIndex=0;
+			int leftChildrenIndex=currentIndex*2+1;
+			int rightChildrenIndex=leftChildrenIndex+1;
+			
+			while(((leftChildrenIndex<array.length-1-i)&&(array[currentIndex]<array[leftChildrenIndex]))||((rightChildrenIndex<array.length-1-i)&&(array[currentIndex]<array[rightChildrenIndex])))
+			{
+				int swapIndex=leftChildrenIndex;
+				//if right bigger than left swap with right 
+				if ((array[rightChildrenIndex]>array[leftChildrenIndex])&&(rightChildrenIndex<array.length-1-i))
+				{
+					swapIndex = rightChildrenIndex;
+				}
+
+				//swap current with one children
+				t = array[swapIndex];
+				array[swapIndex] = array[currentIndex];
+				array[currentIndex] = t;
+				
+				currentIndex = swapIndex;
+				leftChildrenIndex=currentIndex*2+1;
+				rightChildrenIndex=leftChildrenIndex+1;
+			}
+			
+			
+		}
+		
+		
+		
+		
 		// TODO Auto-generated method stub
-		return null;
+		return array;
 	}
 
 	public static int[] randomizedQuickSort(int[] array) {
