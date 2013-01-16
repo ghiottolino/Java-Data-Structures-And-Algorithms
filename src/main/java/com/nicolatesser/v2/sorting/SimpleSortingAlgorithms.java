@@ -71,8 +71,25 @@ public class SimpleSortingAlgorithms {
 	}
 
 	public static int[] selectionSort(int[] array) {
-		// TODO Auto-generated method stub
-		return null;
+		for (int i=0;i<array.length-1;i++)
+		{
+			int minIndex = i;
+			for (int j=i+1;j<array.length;j++)
+			{
+				if (array[j]<array[minIndex])
+				{
+					minIndex=j;
+				}
+			}
+			if (minIndex!=i)
+			{
+				int t=array[i];
+				array[i]=array[minIndex];
+				array[minIndex]=t;
+			}
+		
+		}
+		return array;
 	}
 
 	public static int[] mergeSort(int[] array) {
