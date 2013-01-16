@@ -151,9 +151,47 @@ public class SimpleSortingAlgorithms {
 	}
 
 	public static int[] quickSort(int[] array) {
-		// TODO Auto-generated method stub
-		return null;
+		return quickSort(array,0,array.length-1);
 	}
+	
+	public static int[] quickSort(int[] array,int a, int b) {
+		if (a>=b) return array;
+		else
+		{
+			int pivot = array[a];
+			int i = a+1;
+			int j = b;
+			while (j>i)
+			{
+				while((array[i]<pivot)&&(i<b))i++;
+				while((array[j]>pivot)&&(j>a+1))j--;
+				if (i<j)
+				{
+					int t=array[i];
+					array[i]=array[j];
+					array[j]=t;
+				}
+			}
+			
+			quickSort(array,a+1,j);
+			quickSort(array,j+1,b);
+			
+			//put L E G 
+			if (array[j]<pivot)
+			{
+				for(int k=a+1;k<=j;k++)
+				{
+					array[k-1] = array[k];
+				}
+				array[j]=pivot;
+			}
+
+			
+			
+			return array;
+		}
+	}
+	
 
 	public static int[] heapSort(int[] array) {
 		// build heap
