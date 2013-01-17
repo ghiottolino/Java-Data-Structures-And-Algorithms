@@ -1,5 +1,6 @@
 package com.nicolatesser.v2.sorting;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.nicolatesser.v2.sorting.SimpleSortingAlgorithms;
@@ -84,6 +85,7 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 
+	@Ignore
 	public final void testRandomizedQuickSort() {
 		int[] orderedArray = SimpleSortingAlgorithms.randomizedQuickSort(this.array);
 		assertArrayIsOrdered(orderedArray);
