@@ -65,6 +65,7 @@ public class ArrayAndStringsAlgorithms {
 	 * 4) Forgot to use get for retrieving an obj from hashmap. writing and retrieving could be done with primitive types.
 	 * 5) Always use semi-colon after the if condition (before the else) +2
 	 * 6) Replacing a given char in a string with a index cannot done through referiments (a new String must be created).
+	 * 7) Putting round brackets after the class name
 	 */
 	
 }
