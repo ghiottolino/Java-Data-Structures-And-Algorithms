@@ -76,9 +76,10 @@ public class SimpleSortingAlgorithmsTest extends TestCase {
 
 	}
 
-	public final void testRandomizedQuickSort() {
+	public final void testRadixSort() {
+		this.array = new int[] { 27, 38, 15, 22, 03, 1, 44, 90, 69, 6 };
 		int[] orderedArray=Arrays.copyOf(array, array.length);		
-		SimpleSortingAlgorithms.quickSort(orderedArray);
+		SimpleSortingAlgorithms.radixSort(orderedArray,2);
 		assertArrayIsOrdered(orderedArray);
 
 	}

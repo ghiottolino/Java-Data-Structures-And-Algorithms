@@ -30,8 +30,8 @@ public class SimpleSortingAlgorithms {
 		for (int i=1;i<array.length;i++){
 			int value=array[i];
 			int j=0;
-			while (j<=i && array[j]<=array[i])j++;
-			for (int k=i;k>j;k--) array[i]=array[i-1];
+			while (j<i && array[j]<=array[i])j++;
+			for (int k=i;k>j;k--) array[k]=array[k-1];
 			array[j]=value;
 		}
 	}
@@ -63,7 +63,7 @@ public class SimpleSortingAlgorithms {
 	
 	public static void mergeSort(int[]array, int i, int j){
 		if (i>=j) return;
-		int m=i+j/2;
+		int m=(i+j)/2;//int m=i+j/2;
 		mergeSort(array,i,m);
 		mergeSort(array,m+1,j);
 		merge(array,i,m,j);
@@ -117,31 +117,31 @@ public class SimpleSortingAlgorithms {
 	
 	public static void heapSort(int[]array){
 		for (int i=(array.length/2)-1;i>=0;i--){
-			balanceHeap(array,i);
+			balanceHeap(array,i, array.length);
 		}
 		int n=array.length;
 		for (int i=1;i<=n;i++){
 			swap(array,0,n-i);
-			balanceHeap(array,0);
+			balanceHeap(array,0,n-i);
 		}
 	}
 	
-	public static void balanceHeap(int[]array, int i){
-		int n=array.length;
+	public static void balanceHeap(int[]array, int i, int n){
+
 		int left=(i+1)*2-1;
 		int right=(i+1)*2;
 		if (left>=n)return;
 		int maxIndex=i;
 		if(array[i]<array[left])maxIndex=left;
-		else if (array[maxIndex]<array[right])maxIndex=right;
+		if (right<n && array[maxIndex]<array[right])maxIndex=right;
 		if (maxIndex==i)return;
 		else if (maxIndex==left){
 			swap(array,i,left);
-			balanceHeap(array,left);
+			balanceHeap(array,left,n);
 		}
 		else if (maxIndex==right){
 			swap(array,i,right);
-			balanceHeap(array,right);
+			balanceHeap(array,right,n);
 		}
 	}
 }
